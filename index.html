@@ -1,0 +1,650 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="/style/css/font-awesome.min.css" rel="stylesheet"  type="text/css">
+<link rel="stylesheet" href="/style/css/bootstrap.min.css"  type="text/css">
+<link rel="stylesheet" href="/style/css/common.css?202307"  type="text/css">
+
+<link rel="shortcut icon" href="/style/img/b-16.ico" type="image/x-icon" />
+
+
+<title>BlackToon 블랙툰 - 무료웹툰 웹툰미리보기</title>
+<meta name="keywords" content="블랙툰,Blacktoon,웹툰,무료웹툰,웹툰 미리보기,네이버웹툰,다음웹툰,카카오웹툰,레진웹툰">
+<meta name="description" content="가장 많은 무료웹툰을 보유하고 있으며 빠른 업데이트와 편의성으로 네이버웹툰,다음웹툰,카카오웹툰,레진코믹스  웹툰 서비스 제공">
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="/style/js/jquery-3.5.1.min.js"></script> 
+<script src="/style/js/popper.min.js" ></script>
+<script src="/style/js/bootstrap.min.js" ></script>
+<script src="/style/js/jsonDB.js" ></script>
+<script src="/style/js/common.js?22" ></script>
+<script>document.write("<script type='text/javascript' src='/data/config.js?v="+Math.random()+"'></s"+"cript>");</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F14Q6XRYP5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F14Q6XRYP5');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-175188271-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-175188271-1');
+</script>	
+
+<script>
+//init platform/pday...
+var platforms={}, tags={}, pdays={};
+platforms["1"]	= '네이버';	
+platforms["2"]	= '다음';	
+platforms["3"]	= '카카오';	
+platforms["4"]	= '레진';	
+platforms["5"]	= '투믹스';	
+platforms["6"]	= '탑툰';	
+platforms["7"]	= '코미카';	
+platforms["8"]	= '배틀코믹';	
+platforms["9"]	= '코믹GT';	
+platforms["10"]	= '케이툰';	
+platforms["11"]	= '애니툰';	
+platforms["12"]	= '폭스툰';	
+platforms["13"]	= '피너툰';	
+platforms["14"]	= '봄툰';	
+platforms["15"]	= '코미코';	
+platforms["16"]	= '무툰';	
+platforms["17"]	= '지존신마';	
+platforms["99"]	= '기타';	
+platforms["1"] = '<img src="/style/img/naver.png"  class="rounded" style="">';	
+platforms["2"] = '<img src="/style/img/daum.png"  class="rounded" style="">';	
+platforms["3"] = '<img src="/style/img/kakao.png"  class="rounded" style="">';	
+platforms["4"] = '<img src="/style/img/rejin.png"  class="rounded" style="">';	
+platforms["5"] = '<img src="/style/img/tomics.png"  class="rounded" style="">';	
+platforms["6"] = '<img src="/style/img/toptoon.png"  class="rounded" style="">';	
+platforms["7"] = '<img src="/style/img/comica.png"  class="rounded" style="">';	
+platforms["8"] = '<img src="/style/img/battlecomics.png"  class="rounded" style="">';	
+platforms["9"] = '<img src="/style/img/comicgt.png"  class="rounded" style="">';	
+platforms["10"] = '<img src="/style/img/ktoon.png"  class="rounded" style="">';	
+platforms["11"] = '<img src="/style/img/anitoon.png"  class="rounded" style="">';	
+platforms["12"] = '<img src="/style/img/foxtoon.png"  class="rounded" style="">';	
+platforms["13"] = '<img src="/style/img/peanutoon.png"  class="rounded" style="">';	
+platforms["14"] = '<img src="/style/img/bom.png"  class="rounded" style="">';	
+platforms["15"] = '<img src="/style/img/comico.png"  class="rounded" style="">';	
+platforms["16"] = '<img src="/style/img/mootoon.png"  class="rounded" style="">';	
+platforms["17"] = '<img src="/style/img/etc.png"  class="rounded" style="">';	
+platforms["100"] = '<img src="/style/img/etc.png"  class="rounded" style="">';	
+platforms["99"] = '<img src="/style/img/etc.png"  class="rounded" style="">';	
+platforms["0"] = '<img src="/style/img/etc.png"  class="rounded" style="">';	
+//platforms["0"] = '기타';	
+
+tags["1"]	= '학원';	
+tags["2"]	= '액션';	
+tags["3"]	= 'SF';	
+tags["4"]	= '스토리';	
+tags["5"]	= '판타지';	
+tags["6"]	= 'BL/백합';	
+tags["7"]	= '개그/코미디';	
+tags["8"]	= '연애/순정';	
+tags["9"]	= '드라마';	
+tags["10"]	= '로맨스';	
+tags["11"]	= '시대극';	
+tags["12"]	= '스포츠';	
+tags["13"]	= '일상';	
+tags["14"]	= '추리/미스터리';	
+tags["15"]	= '공포/스릴러';	
+tags["16"]	= '성인';	
+tags["17"]	= '옴니버스';	
+tags["18"]	= '에피소드';	
+tags["19"]	= '무협';	
+tags["20"]	= '소년';	
+tags["99"]	= '기타';	
+	
+
+pdays["1"]	= '월';	
+pdays["2"]	= '화';	
+pdays["3"]	= '수';	
+pdays["4"]	= '목';	
+pdays["5"]	= '금';	
+pdays["6"]	= '토';	
+pdays["7"]	= '일';	
+pdays["10"]	= '10';	
+pdays["10"] = "열흘";
+</script>		
+	
+<script type="text/javascript">
+$(function(){
+	$('.search_btn').click(function(){
+			search();
+	});
+	
+
+	$('.search_input').keyup(function(event){
+		if(event.keyCode==13){
+			search();
+		}
+	})
+})
+	
+</script>
+</head>
+<body>
+<iframe src="//blacktoon66.com/cookie.html?2020" id="cookie_iframe" width="800" height="0" frameborder="0" style="display: none!important; height: 0px;" ></iframe>
+<script src="/style/js/cookie.js?_20201003123" ></script>
+
+<header class="container-full bg-black fixed-top" style="position: absolute;">
+<div class="container">
+<div class="row" style="padding:0px;">
+<nav class="navbar navbar-expand-lg navbar-dark  col-12 "> 
+  <a class="navbar-brand" href="/"><!-- <img src="/style/img/black-logo.png" > --><b style="color:#fff;">Black</b>TOON</a>
+
+
+
+ 
+
+
+	
+  <div class="collapse navbar-collapse" id="navbarText" >
+    <ul class="navbar-nav mr-auto">
+      
+      <li class="nav-item">
+        <a class="nav-link nav_category nav_category_continue nav_category_end" href="/#continue" onClick="return gomenu('continue')">웹툰</a>
+      </li>
+		
+		<li class="nav-item" style="display: none!important">
+        <a class="nav-link nav_category nav_category_cartoon" href="/#cartoon" onClick="return gomenu('cartoon')">만화</a>
+      </li>
+		
+      <li class="nav-item">
+        <a class="nav-link nav_category nav_category_my"  href="/#my"  onClick="return gomenu('my')"  attr-id="my">북마크</a>
+      </li>
+	  <li class="nav-item">
+        <a  href="/#history" class="nav-link nav_category nav_category_history"  onClick="return gomenu('history')"  attr-id="history">최근본웹툰</a>
+      </li>
+	  <li class="nav-item">
+        
+		  <script>
+   document.write("<script type='text/javascript' src='/poster_js/22.js?v="+poster_js+"'></s"+"cript>");
+</script>
+      </li>
+      <li class="nav-item">
+        <script>
+   document.write("<script type='text/javascript' src='/poster_js/25.js?v="+poster_js+"'></s"+"cript>");
+</script>
+      </li>
+      <li class="nav-item">
+        <script>
+   document.write("<script type='text/javascript' src='/poster_js/26.js?v="+poster_js+"'></s"+"cript>");
+</script>
+      </li>
+    </ul>
+	<!-- <div class="form-inline my-2 my-lg-0">
+	<div class="input-group" >
+		  <input type="text" class="form-control search_input" id="search_input" placeholder="키워드" aria-label="키워드" aria-describedby="button-addon4" style="max-width:150px;">
+		  <div class="input-group-append" id="button-addon4">
+			<button class="btn btn-outline-secondary search_btn" type="button" ><i class="fa fa-search"></i></button>
+		  </div>
+		</div>
+	</div> -->
+    
+  </div>
+
+   <div class="navbar-toggler" style="padding:0px;margin:0px;border:none;display:block;">
+		<div class="input-group" >
+		  <input type="text" class="form-control search_input" placeholder="제목/작가" aria-label="제목/작가" aria-describedby="button-addon4" style="max-width:90px;background:#161823;border:1px solid #6c757d;color:#fff;font-size:14px;">
+		  <div class="input-group-append" id="button-addon4" style="background:#161823;">
+			<button class="btn btn-outline-secondary search_btn"  type="button" style="font-size:14px"><i class="fa fa-search"></i></button>
+		  </div>
+		</div>
+  </div>
+
+
+
+</nav>
+
+
+
+
+</div>
+</div>
+</header>
+
+<style>
+.mb-nav div.nav_category {float: left;flex: 1 1 auto;width: auto;}
+.mb-nav {text-align:center;color:#a2a5b0;background:#0b0b1c;padding:0;padding-left:15px;padding-right:15px;}
+.mb-nav a {color:#ccc;display:block;width:100%;height:100%;padding-top:7px;padding-bottom:7px;font-size:16px;border-bottom: 1px solid #000;}
+.mb-nav div.active {background:#0b0b1c;}
+.mb-nav div.active a {color:#fff;border-bottom: 1px solid #f83d3d;font-weight: bold;}
+.mb-nav div.cols {float:left;flex: 1 1 auto;text-align:center;}
+
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark  col-12 mb-nav "> 
+	<div class="row">
+		<div class="cols nav_category nav_category_continue nav_category_end active" style="padding-left:0px;padding-right:0px;"><a  href="/#continue" onClick="gomenu('continue')">웹툰</a></div>
+		<div class="cols nav_category nav_category_cartoon" style="display: none!important" ><a  href="/#cartoon" onClick="gomenu('cartoon')">만화</a></div>
+		<div class="cols nav_category nav_category_my" style="padding-left:0px;padding-right:0px;"><a href="/#my"  onClick="gomenu('my')"  attr-id="my">북마크</a></div>
+		<div class="cols nav_category nav_category_history" style="padding-left:0px;padding-right:0px;"><a href="/#history"   onClick="gomenu('history')"  attr-id="history"><i class="fa fa-history"></i></a></div>
+		<div class="cols nav_category " style="padding-left:0px;padding-right:0px;">
+			<script>
+   document.write("<script type='text/javascript' src='/poster_js/22.js?v="+poster_js+"'></s"+"cript>");
+</script></div>
+		<div class="cols nav_category " style="padding-left:0px;padding-right:0px;">
+		<script>
+   document.write("<script type='text/javascript' src='/poster_js/25.js?v="+poster_js+"'></s"+"cript>");
+</script>
+		</div>
+		<div class="cols nav_category " style="padding-left:0px;padding-right:0px;">
+			<script>
+   document.write("<script type='text/javascript' src='/poster_js/26.js?v="+poster_js+"'></s"+"cript>");
+</script>
+			</div> 
+
+		<script>
+		function myFunction777() {
+		  alert("준비중입니다");
+		}
+		</script>
+
+	</div>
+</nav>
+
+
+<div class="container banner mt-2"> 
+	
+	<div class="row" style="">		
+		<div class="alert alert-dark" role="alert" style="font-size:14px;width:100%;background:#161823;color:#fff;border:none;margin-bottom:0px;padding: .2rem .75rem;border-radius:0px;text-align:center;">
+		  <span class="" style="margin-top:5px;">접속주소 공지사항 및 광고문의</span> &nbsp;&nbsp;<script>
+   document.write("<script type='text/javascript' src='/poster_js/27.js?v="+poster_js+"'></s"+"cript>");
+</script>
+		</div>
+	</div>
+
+</div>
+
+<!-- <div class="container banner mt-2">
+	
+	<div class="row">
+		
+		<div class="alert alert-dark" role="alert" style="font-size:14px;width:100%;background:#161823;color:#fff;border:none;margin-bottom:0px;">
+		  <span class="float-left" style="margin-top:5px;">블랙넷에서 최신 접속 주소를 확인하세요</span> <a href="https://blacktoon.net" class="btn btn-dark btn-sm float-right" target="_blank" style="font-size:12px;">바로가기</a>
+		</div>
+	</div>
+
+</div> -->
+
+<style>
+.top-ad-padding {padding-left: 12px;padding-right: 12px;}
+
+@media (min-width: 1200px) {
+.top-ad-padding {padding:0px;}
+}
+
+@media (min-width: 768px) { 
+.top-ad-padding {padding:0px;}
+
+}
+
+@media (min-width: 992px) {
+.top-ad-padding {padding:0px;}
+
+}
+
+</style>
+<div class="container banner mt-2" style="padding-left:20px;padding-right:20px;">
+	<div class="row top-ad-padding" >
+ <script>
+   document.write("<script type='text/javascript' src='/poster_js/11.js?v="+poster_js+"'></s"+"cript>");
+</script>
+		
+
+	</div>
+</div>
+
+
+<script type="text/javascript">
+
+	//document.write("<script type='text/javascript' src='/data/webtoon_1.js?_=a20230813230134-2023081323-0'></s"+"cript>");
+   //document.write("<script type='text/javascript' src='/data/webtoon_0.js?_=a20230707233814-2023081323-0'></s"+"cript>");
+   
+</script>
+
+<script src="/data/webtoon/webtoon_1_08132303.js?" ></script>
+<script src="/data/webtoon/webtoon_0_08132303.js?" ></script>
+
+<script>document.write("<script type='text/javascript' src='/data/top.js?v="+Math.random()+"'></s"+"cript>");</script>
+
+ 
+
+
+<script src="/style/js/index.function.js?2023" ></script>
+<script src="/style/js/index.data.js?20230211" ></script>
+
+
+<style>
+.nav-tabs li.nav-item {width:33.3%;}
+.nav-tabs li.nav-item span.badge {font-size:50%;position: absolute}
+.best-webtoon-list {}
+.best-webtoon-list div.col {padding:0px;text-align:center;}
+.best-webtoon-list div.col a {display:block;width:100%;height:100%;color:#ccc;border-bottom:1px solid #474a53;font-size:14px;padding:7px 7px;}
+.best-webtoon-list div.active a {color:#fff;border-bottom:1px solid #f83d3d;font-weight: bold;}
+.best-webtoon-btn button.btn {font-size:12px;padding: .3rem .4rem;}
+</style>
+
+
+<div class="container banner mt-2" style="padding-left:1px;padding-right:1px;">
+	
+	
+<script>
+	document.write("<script type='text/javascript' src='/poster_js/19.js?v="+poster_js+"'></s"+"cript>");
+	</script>
+    
+    
+
+
+</div>
+
+
+<div class="container-full mt-2">
+	<div class="container">
+		<div class="row" >
+			<div class="col-12 f_category" style="padding:5px;">
+				<ul class="nav nav-tabs" id="myTab" role="tablist">
+				  <li class="nav-item nav_category nav_category_continue" role="presentation">
+					<a class="nav-link active" id="home-tab" href="#continue" onClick="gomenu('continue')" data-toggle="tab"  role="tab" aria-controls="home" aria-selected="true">연재</a>
+				  </li>
+				  <li class="nav-item  nav_category_end" role="presentation">
+					<a class="nav-link" id="profile-tab" data-toggle="tab"  href="#end" onClick="gomenu('end')"  role="tab" aria-controls="profile" aria-selected="false">완결</a>
+				  </li>
+				  <li class="nav-item nav_category_top" role="presentation">
+					<a class="nav-link" id="profile-tab2" data-toggle="tab" href="#top" onClick="gomenu('top')" role="tab" aria-controls="profile" aria-selected="true">인기</a>
+				  </li>
+				</ul>
+			</div>
+			<div class="col-12 " >
+				<div class="tab-content " id="myTabContent1">
+
+				<div class=" show active f_pday" id="home" >
+					
+					<div class="week row mt-2 nav_p_pday " style="text-align:center;padding:5px;">
+
+						<button type="button" class="btn btn-outline-secondary nav_pday nav_pday_0" attr-id="0">UP</button>
+						<button type="button" class="btn btn-outline-secondary nav_pday nav_pday_1" attr-id="1">월</button>
+						<button type="button" class="btn btn-outline-secondary nav_pday nav_pday_2" attr-id="2">화</button>
+						<button type="button" class="btn btn-outline-secondary nav_pday nav_pday_3" attr-id="3">수</button>
+						<button type="button" class="btn btn-outline-secondary nav_pday nav_pday_4" attr-id="4">목</button>
+						<button type="button" class="btn btn-outline-secondary nav_pday nav_pday_5" attr-id="5">금</button>
+						<button type="button" class="btn btn-outline-secondary nav_pday nav_pday_6" attr-id="6">토</button>
+						<button type="button" class="btn btn-outline-secondary nav_pday nav_pday_7" attr-id="7">일</button>
+						<button type="button" class="btn btn-outline-secondary nav_pday nav_pday_10" attr-id="10">10</button>
+
+					</div>
+
+				  </div>
+					
+				<div class=" show active f_platform" id="home" >
+					
+					<div class="platform mt-2 nav_p_platform " style="text-align:center;padding:5px;padding-top:10px;background:#161823;border-radius:15px;margin-left:-10px;margin-right:-10px;">
+						<button type="button" class="btn btn-outline-secondary nav_platform nav_platform_0" attr-id="0" style="width:auto;margin-bottom:5px;font-size:12px;">전체</button>
+						
+												
+						<button type="button" class="btn btn-outline-secondary nav_platform nav_platform_1"  attr-id="1" style="width:auto;margin-bottom:5px;">
+							<img src="/style/img/naver.png?" alt="네이버" class="rounded" style="width:18px;margin-top:-0px;">
+						</button>
+						
+
+													
+						<button type="button" class="btn btn-outline-secondary nav_platform nav_platform_2"  attr-id="2" style="width:auto;margin-bottom:5px;">
+							<img src="/style/img/daum.png?" alt="다음" class="rounded" style="width:18px;margin-top:-0px;">
+						</button>
+						
+
+													
+						<button type="button" class="btn btn-outline-secondary nav_platform nav_platform_3"  attr-id="3" style="width:auto;margin-bottom:5px;">
+							<img src="/style/img/kakao.png?" alt="카카오" class="rounded" style="width:18px;margin-top:-0px;">
+						</button>
+						
+
+													
+						<button type="button" class="btn btn-outline-secondary nav_platform nav_platform_4"  attr-id="4" style="width:auto;margin-bottom:5px;">
+							<img src="/style/img/rejin.png?" alt="레진" class="rounded" style="width:18px;margin-top:-0px;">
+						</button>
+						
+
+													
+						<button type="button" class="btn btn-outline-secondary nav_platform nav_platform_5"  attr-id="5" style="width:auto;margin-bottom:5px;">
+							<img src="/style/img/tomics.png?" alt="투믹스" class="rounded" style="width:18px;margin-top:-0px;">
+						</button>
+						
+
+													
+						<button type="button" class="btn btn-outline-secondary nav_platform nav_platform_6"  attr-id="6" style="width:auto;margin-bottom:5px;">
+							<img src="/style/img/toptoon.png?" alt="탑툰" class="rounded" style="width:18px;margin-top:-0px;">
+						</button>
+						
+
+													
+						<button type="button" class="btn btn-outline-secondary nav_platform nav_platform_7"  attr-id="7" style="width:auto;margin-bottom:5px;">
+							<img src="/style/img/comica.png?" alt="코미카" class="rounded" style="width:18px;margin-top:-0px;">
+						</button>
+						
+
+													
+						<button type="button" class="btn btn-outline-secondary nav_platform nav_platform_8"  attr-id="8" style="width:auto;margin-bottom:5px;">
+							<img src="/style/img/battlecomics.png?" alt="배틀코믹" class="rounded" style="width:18px;margin-top:-0px;">
+						</button>
+						
+
+													
+						<button type="button" class="btn btn-outline-secondary nav_platform nav_platform_9"  attr-id="9" style="width:auto;margin-bottom:5px;">
+							<img src="/style/img/comicgt.png?" alt="코믹GT" class="rounded" style="width:18px;margin-top:-0px;">
+						</button>
+						
+
+													
+						<button type="button" class="btn btn-outline-secondary nav_platform nav_platform_10"  attr-id="10" style="width:auto;margin-bottom:5px;">
+							<img src="/style/img/ktoon.png?" alt="케이툰" class="rounded" style="width:18px;margin-top:-0px;">
+						</button>
+						
+
+													
+						<button type="button" class="btn btn-outline-secondary nav_platform nav_platform_11"  attr-id="11" style="width:auto;margin-bottom:5px;">
+							<img src="/style/img/anitoon.png?" alt="애니툰" class="rounded" style="width:18px;margin-top:-0px;">
+						</button>
+						
+
+													
+						<button type="button" class="btn btn-outline-secondary nav_platform nav_platform_12"  attr-id="12" style="width:auto;margin-bottom:5px;">
+							<img src="/style/img/foxtoon.png?" alt="폭스툰" class="rounded" style="width:18px;margin-top:-0px;">
+						</button>
+						
+
+													
+						<button type="button" class="btn btn-outline-secondary nav_platform nav_platform_13"  attr-id="13" style="width:auto;margin-bottom:5px;">
+							<img src="/style/img/peanutoon.png?" alt="피너툰" class="rounded" style="width:18px;margin-top:-0px;">
+						</button>
+						
+
+													
+						<button type="button" class="btn btn-outline-secondary nav_platform nav_platform_14"  attr-id="14" style="width:auto;margin-bottom:5px;">
+							<img src="/style/img/bom.png?" alt="봄툰" class="rounded" style="width:18px;margin-top:-0px;">
+						</button>
+						
+
+													
+						<button type="button" class="btn btn-outline-secondary nav_platform nav_platform_15"  attr-id="15" style="width:auto;margin-bottom:5px;">
+							<img src="/style/img/comico.png?" alt="코미코" class="rounded" style="width:18px;margin-top:-0px;">
+						</button>
+						
+
+													
+						<button type="button" class="btn btn-outline-secondary nav_platform nav_platform_16"  attr-id="16" style="width:auto;margin-bottom:5px;">
+							<img src="/style/img/mootoon.png?" alt="무툰" class="rounded" style="width:18px;margin-top:-0px;">
+						</button>
+						
+
+													
+						<button type="button" class="btn btn-outline-secondary nav_platform nav_platform_99"  attr-id="99" style="width:auto;margin-bottom:5px;">
+							<img src="/style/img/etc.png?" alt="기타" class="rounded" style="width:18px;margin-top:-0px;">
+						</button>
+						
+
+												</div>
+
+				  </div>
+
+				  <div class=" f_tag" id="profile" >
+						
+						<div class="mt-2 my-cate nav_p_tag" style="margin:0 auto;margin-left:-15px;margin-right:-15px;padding:5px;text-align:center;">
+							<a class="btn btn-danger btn-sx btn btn-outline-secondary btn-sm nav_tag nav_tag_0">전체</a>
+							
+														<a class="btn btn-outline-secondary btn-sm nav_tag nav_tag_1" attr-id="1">학원</a>
+														<a class="btn btn-outline-secondary btn-sm nav_tag nav_tag_2" attr-id="2">액션</a>
+														<a class="btn btn-outline-secondary btn-sm nav_tag nav_tag_3" attr-id="3">SF</a>
+														<a class="btn btn-outline-secondary btn-sm nav_tag nav_tag_4" attr-id="4">스토리</a>
+														<a class="btn btn-outline-secondary btn-sm nav_tag nav_tag_5" attr-id="5">판타지</a>
+														<a class="btn btn-outline-secondary btn-sm nav_tag nav_tag_6" attr-id="6">BL/백합</a>
+														<a class="btn btn-outline-secondary btn-sm nav_tag nav_tag_7" attr-id="7">개그/코미디</a>
+														<a class="btn btn-outline-secondary btn-sm nav_tag nav_tag_8" attr-id="8">연애/순정</a>
+														<a class="btn btn-outline-secondary btn-sm nav_tag nav_tag_9" attr-id="9">드라마</a>
+														<a class="btn btn-outline-secondary btn-sm nav_tag nav_tag_10" attr-id="10">로맨스</a>
+														<a class="btn btn-outline-secondary btn-sm nav_tag nav_tag_11" attr-id="11">시대극</a>
+														<a class="btn btn-outline-secondary btn-sm nav_tag nav_tag_12" attr-id="12">스포츠</a>
+														<a class="btn btn-outline-secondary btn-sm nav_tag nav_tag_13" attr-id="13">일상</a>
+														<a class="btn btn-outline-secondary btn-sm nav_tag nav_tag_14" attr-id="14">추리/미스터리</a>
+														<a class="btn btn-outline-secondary btn-sm nav_tag nav_tag_15" attr-id="15">공포/스릴러</a>
+														<a class="btn btn-outline-secondary btn-sm nav_tag nav_tag_16" attr-id="16">성인</a>
+														<a class="btn btn-outline-secondary btn-sm nav_tag nav_tag_17" attr-id="17">옴니버스</a>
+														<a class="btn btn-outline-secondary btn-sm nav_tag nav_tag_18" attr-id="18">에피소드</a>
+														<a class="btn btn-outline-secondary btn-sm nav_tag nav_tag_19" attr-id="19">무협</a>
+														<a class="btn btn-outline-secondary btn-sm nav_tag nav_tag_20" attr-id="20">소년</a>
+														<a class="btn btn-outline-secondary btn-sm nav_tag nav_tag_99" attr-id="99">기타</a>
+														
+
+						</div>
+				  </div>
+
+					
+				 <div class="active show f_top" id="profile2" role="tabpanel" aria-labelledby="profile-tab" style="display: none">
+						
+							<div class="best-webtoon-list mt-2">
+								<div class="row nav_p_toptime" >
+									<div class="col  nav_toptime nav_toptime_d" attr-id="d"><a href="javascript:;">일간BEST</a></div>
+									<div class="col  nav_toptime nav_toptime_w" attr-id="w"><a href="javascript:;">주간BEST</a></div>
+									<div class="col  nav_toptime nav_toptime_m" attr-id="m"><a href="javascript:;">월간BEST</a></div>
+									<div class="col  nav_toptime nav_toptime_h" attr-id="h"><a href="javascript:;">실시간BEST</a></div>
+								</div>
+							</div>
+						
+
+						<div class="mt-2 my-cate" style="margin:0 auto;margin-left:-15px;margin-right:-15px;padding:5px;">
+							<div class="btn-group btn-group-sm best-webtoon-btn nav_p_toptype" role="group" aria-label="Button group with nested dropdown" style="width:100%;">
+								  <button type="button" class="btn btn-danger nav_toptype nav_toptype_comm" attr-id="comm">일반웹툰</button>
+								  <button type="button" class="btn btn-outline-secondary nav_toptype nav_toptype_19" attr-id="19">성인웹툰</button>
+								  <button type="button" class="btn btn-outline-secondary nav_toptype nav_toptype_bl" attr-id="bl">BL/백합</button>
+							</div>
+							
+						</div>
+
+				  </div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--<div class="container banner mt-2" style="padding-left:1px;padding-right:1px;">
+	
+	<div class="alert alert-danger alert-dismissible fade show" role="alert" style="font-size:12px;width:100%;background:#161823;color:#f8e876;border:none;margin-bottom:0px;padding: .5rem .75rem;padding-right: 45px;border-radius:0px;text-align:center;">
+		  <strong>[공지]</strong> 북마크,최근본웹툰 기록이 없을시 새로고침 해주세요
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="padding: .5rem .75rem;line-height: 15px;">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+	</div>
+
+
+</div>
+-->
+<div class="container banner mt-2" style="padding-left:1px;padding-right:1px;">
+	
+	<div class="alert alert-danger alert-dismissible fade show" role="alert" style="font-size:12px;width:100%;background:#161823;color:#f8e876;border:none;margin-bottom:0px;padding: .5rem .75rem;padding-right: 45px;border-radius:0px;text-align:center;">
+		  <strong>[공지]</strong> 이미지가 안나올 시 페이지를 새로고침 해주세요
+
+
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="padding: .5rem .75rem;line-height: 15px;">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+	</div>
+	<!--<div class="alert alert-danger alert-dismissible fade show" role="alert" style="font-size:12px;width:100%;background:#161823;color:#f8e876;border:none;margin-bottom:0px;border-radius:0px;text-align:center;padding:0px;">
+		  <a href="https://bluelivetv.com/html/game_list/show_21269.html" target="_blank"><img src="https://blackmanaimg.com/img/ad-img/son2.png" style="width:100%;max-width:450px;"></a>
+	</div>-->
+
+
+</div>
+			
+<div class="container container_main">
+	<div class="row list-item"  >
+	<div class="col-12 col-sm-12 col-md-12 mt-2 mb-2 f_filter" style="padding:5px;">
+			<div class="btn-group btn-group-sm nav_p_orderby" role="group" aria-label="Button group with nested dropdown">
+			  <button type="button" class="btn btn-danger nav_orderby nav_orderby_new"  attr-id="new" style="font-size:11px;">최신순</button>
+			  <button type="button" class="btn btn-outline-secondary nav_orderby nav_orderby_hot"  attr-id="hot" style="font-size:11px;">인기순</button>  
+			</div>
+		</div> 
+		
+		<div class="col-12 col-sm-12 col-md-12 mt-2 mb-2" style="padding:5px;">
+			<h3 class="float-left delete_all_name" style="color:#fff;font-size:20px;">북마크</h3>
+			<div class="btn-group btn-group-sm float-right" role="group" aria-label="Button group with nested dropdown">
+			  <button type="button" class="btn btn-danger delete_all" style="font-size:11px;">북마크 비우기</button>
+			</div>
+		</div>
+		
+		<div class="col-12 col-sm-12 col-md-12 mt-2 mb-2 search_result_div" style="padding:5px;display: none;">
+			<h3 class="float-left" style="color:#fff;font-size:16px;">[ <span id="search_keyword"></span> ] <span style="color:#ccc;font-size:14px;">검색결과</span></h3>
+		</div>
+		
+	</div>
+	<div class="row list-item"  id="toonbook_list" >
+		<div style="width:100%;margin:0 auto; text-align:center;padding:15px 0;"><img src="/style/img/loading9.gif?313"></div>
+
+	</div>
+</div>
+
+<!-- <div class="container banner mt-3 mb-3">
+	<div class="row">
+	<script>
+   	document.write("<script type='text/javascript' src='//js.blackmanaimg.com/poster_js/12.js?v=2020"+new Date().getMonth()+new Date().getDay()+new Date().getHours()+new Date().getMinutes()+"'></s"+"cript>");
+	document.write("<script type='text/javascript' src='//js.blackmanaimg.com/poster_js/12.js?v=2020"+new Date().getTime()+"'></s"+"cript>");
+	</script>
+
+	</div>
+</div> -->
+
+<div class="container banner mt-3 mb-3">
+	<div class="row">
+	<script>
+	document.write("<script type='text/javascript' src='/poster_js/12.js?v="+poster_js+"'></s"+"cript>");
+	</script>
+	</div>
+</div>
+
+
+
+ 
+
+<!--<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>-->
+
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
